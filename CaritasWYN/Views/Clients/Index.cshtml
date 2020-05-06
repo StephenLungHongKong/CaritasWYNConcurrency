@@ -1,89 +1,139 @@
 ﻿@model IEnumerable<CaritasWYN.Models.Client>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Client List";
 }
 
-<h1>Index</h1>
+<style>
+    table{width:100%}
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Age)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Room)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Floor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Street)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Building)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.District)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Referrer)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Age)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Room)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Floor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Street)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Building)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.District)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Referrer.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ClientId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ClientId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ClientId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    thead, tbody, tr, td, th {
+        display: block;
+    }
+
+    tr:after {
+        content: ' ';
+        display: block;
+        visibility: hidden;
+        clear: both;
+    }
+
+    thead th {
+        height: 50px;
+    }
+
+    tbody {
+        height: 250px;
+        overflow-y: auto;
+        border: 1px solid #c5d5e5
+    }
+
+    thead {
+        border-right: 20px solid rgba(0, 0, 0, 0.00)
+    }
+
+    thead th, tbody td {
+        width: 16%;
+        float: left;
+    }
+</style>
+
+
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="row>">
+            <h1>Referrers List</h1>
+            <table class="table  table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LastName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Age)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Phone)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Referrer)
+                        </th>
+                        <th class="text-right">
+                            <a asp-action="Create" class="btn btn btn-primary">&#10010</a>
+                        </th>
+                    </tr><tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Room)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Floor)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Street)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Building)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.District)
+                        </th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Age)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Referrer.Name)
+                        </td>
+                        <td class="text-right">
+                            <a asp-action="Details" asp-route-id="@item.ClientId" class="btn btn-outline-dark">Detail</a>
+                        </td>
+                    </tr><tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Room)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Floor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Street)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Building)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.District)
+                        </td>
+
+                        <td class="text-right">
+                            <a asp-action="Edit" asp-route-id="@item.ClientId" class="btn btn-info">Edit</a>
+                            
+                            <a asp-action="Delete" asp-route-id="@item.ClientId" class="btn btn-danger">&#10005</a>
+                        </td>
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -12,11 +12,14 @@ namespace CaritasWYN.Models
         public int StaffId { get; set; }
         [Required]
         [StringLength(50)]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
         [Required]
         [StringLength(50)]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
         public int? JobDutyId { get; set; }
+        [Display(Name = "Job Duty")]
         public JobDuty JobDuty { get; set; }
         public ICollection<DailyActivity> DailyActivities { get; set; }
         public ICollection<Group> Groups { get; set; }

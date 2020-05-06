@@ -12,7 +12,7 @@ namespace CaritasWYN.Models
         public int JobDutyId { get; set; }
         [Required]
         [StringLength(50)]
-        [Display(Name = "JobType")]
+        [Display(Name = "Job Type")]
         public string JobType { get; set; }
         public ICollection<Staff> Staffs { get; set; }
     }
